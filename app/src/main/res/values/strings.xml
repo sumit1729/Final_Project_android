@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"></string>
+    <string-array name="Role">
+        <item>I need mental support(Basic user)</item>
+        <item>I want to support people (Mentor)</item>
+        <item>I provide professional support(Psychologist)</item>
+
+    </string-array>
+</resources>
