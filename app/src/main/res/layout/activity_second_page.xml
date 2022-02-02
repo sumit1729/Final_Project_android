@@ -41,6 +41,7 @@ Now you can log in. "
         android:layout_margin="50dp"
         android:textSize="15dp"/>
     <Button
+        android:id="@+id/login"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:text="Log In"

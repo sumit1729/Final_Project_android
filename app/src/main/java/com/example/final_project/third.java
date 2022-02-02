@@ -7,7 +7,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.view.View.OnClickListener;
@@ -21,7 +25,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class third extends AppCompatActivity {
-    Button button, loginBtn;
+    Button button, loginBtn ,showbtn;
     EditText nEmail, nPass;
     FirebaseAuth fAuth;
 
@@ -59,7 +63,8 @@ public class third extends AppCompatActivity {
                         if(task.isSuccessful())
                         {
                             Toast.makeText(third.this,"Logged in",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(),home_page.class));
+
                         }else {
                             Toast.makeText(third.this,"Error!"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
 
@@ -68,7 +73,7 @@ public class third extends AppCompatActivity {
                     }
                 });
 
-                startActivity(new Intent(third.this, home_page.class));
+
 
             }
         });
@@ -77,7 +82,7 @@ public class third extends AppCompatActivity {
 
         button = (Button) findViewById(R.id.button1);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -88,6 +93,19 @@ public class third extends AppCompatActivity {
 
             }
 
+        });
+        
+        showbtn= (Button) findViewById(R.id.Show);
+
+        showbtn.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if(showbtn.isPressed()) {
+                    nPass.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    return true;
+                }
+                return true;
+            }
         });
 
 
